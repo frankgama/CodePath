@@ -422,30 +422,168 @@ def of_personality_type(townies, personality_type):
 #         print(current.value, end=" -> " if current.next else "\n")
 #         current = current.next
 
+# class Node:
+#     def __init__(self, fish_name, next=None):
+#         self.fish_name = fish_name
+#         self.next = next
+
+# # For testing
+# def print_linked_list(head):
+#     current = head
+#     while current:
+#         print(current.fish_name, end=" -> " if current.next else "\n")
+#         current = current.next
+
+# def catch_fish(head):
+#     if head is None:
+#         print("Aw! Better luck next time!")
+#     else:
+#         fish = head.fish_name   
+#         print(f"I caught a {fish}!")
+#         return head.next
+
+
+# fish_list = Node("Carp", Node("Dace", Node("Cherry Salmon")))
+# empty_list = None
+
+# print_linked_list(fish_list)
+# print_linked_list(catch_fish(fish_list))
+# print(catch_fish(empty_list))
+
+class ListNode(object):
+    def __init__(self, val =0, next=None):
+        self.val = val
+        self.next = next
+class Solution(object):
+    def reverseList(self, head):
+        self.head = head
+        
+        curr = self.head
+        prev = None
+        while curr:
+            temp_node = curr.next
+            curr.next = prev
+            prev = curr
+            curr = temp_node
+        self.head = prev
+        return self.head
+# # Helper function to print the list
+# def print_list(head):
+#     curr = head
+#     while curr:
+#         print(curr.val, end=" -> ")
+#         curr = curr.next
+#     print("None")
+
+# # Create linked list: 1 -> 2 -> 3 -> 4 -> None
+# head = ListNode(1)
+# head.next = ListNode(2)
+# head.next.next = ListNode(3)
+# head.next.next.next = ListNode(4)
+
+# print("Original list:")
+# print_list(head)
+
+# # Reverse the linked list
+# sol = Solution()
+# reversed_head = sol.reverseList(head)
+
+# print("Reversed list:")
+# print_list(reversed_head)
+
+# class Node:
+#     def __init__(self, value, next=None):
+#         self.value = value
+#         self.next = next
+
+# # For testing
+# def print_linked_list(head):
+#     current = head
+#     while current:
+#         print(current.value, end=" -> " if current.next else "\n")
+#         current = current.next
+
+# def find_max(head):
+#     # if empty list, return 0
+#     if not head:
+#         return None
+    
+#     #initialize a max val, initialize curr node
+#     maxval= float('-inf')
+#     curr = head
+
+#     #iterate through list, keeping track of max val
+#     while curr:
+#         if curr.value >= maxval:
+#             maxval = curr.value
+#         curr = curr.next   
+#     #return maxval  
+#     return maxval
+
+
+# head1 = Node(5, Node(6, Node(7, Node(8))))
+
+# # Linked List: 5 -> 6 -> 7 -> 8
+# print(find_max(head1))
+
+# head2 = Node(5, Node(8, Node(6, Node(7))))
+
+# # Linked List: 5 -> 8 -> 6 -> 7
+# print(find_max(head2))
+
+# def delete_dupes(head):
+#     #initialize dummy node 
+#     dummy = Node(0)
+#     dummy.next = head
+#     #initialize the pointers
+#     curr = head
+#     prev = dummy 
+#     #iterate through the linked list
+#     while curr: 
+#         #check if the current node has duplicates
+#         if curr.next and curr.value == curr.next.value: 
+#             #skip the nodes with that value
+#             duplicate_val = curr.value
+#             while curr and curr.value == duplicate_val: 
+#                 curr = curr.next
+#             #update your pointers
+#             prev.next = curr
+#         else: 
+#             prev = curr
+#             curr = curr.next
+    
+#     return dummy.next
+#     #return the list
+
+
 class Node:
-    def __init__(self, fish_name, next=None):
-        self.fish_name = fish_name
+    def __init__(self, value, next=None):
+        self.value = value
         self.next = next
 
-# For testing
-def print_linked_list(head):
-    current = head
-    while current:
-        print(current.fish_name, end=" -> " if current.next else "\n")
-        current = current.next
-
-def catch_fish(head):
+def has_cycle(head):
+    #if empty list
     if head is None:
-        print("Aw! Better luck next time!")
-    else:
-        fish = head.fish_name   
-        print(f"I caught a {fish}!")
-        return head.next
+        return False
+    if head.next is None:
+        return False
 
+    #initiate fast and slow pointers
+    fast = head
+    slow = head.next
 
-fish_list = Node("Carp", Node("Dace", Node("Cherry Salmon")))
-empty_list = None
+    #iterate through linked list with fast and slow
+    while fast:
+        #if fast and slow are equal, return true
+        if fast == slow:
+            return True
+        else:
+            fast = fast.next.next
+            slow = slow.next
+     #if you reach the end, return false
+    return False
 
-print_linked_list(fish_list)
-print_linked_list(catch_fish(fish_list))
-print(catch_fish(empty_list))
+peach = Node("Peach", Node("Luigi", Node("Mario", Node("Toad"))))
+
+print(has_cycle(peach))
+
