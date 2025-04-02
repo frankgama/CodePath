@@ -63,9 +63,9 @@
 # print(is_balanced(code1)) 
 # print(is_balanced(code2)) 
 
-####            Week 2, Session 2           ####  
+# ####            Week 2, Session 2           ####  
 
-from collections import Counter
+# from collections import Counter
 
 # def find_balanced_subsequence(art_pieces):
 #     freq = Counter(art_pieces)
@@ -117,7 +117,7 @@ from collections import Counter
 # print(organize_exhibition(collection1))
 # print(organize_exhibition(collection2))
 
-import re
+# import re
 # def intersect(nums1, nums2):
 #     # Write your code here
 #     if not nums1 and not nums2:
@@ -190,24 +190,24 @@ import re
 # zipped = zip(names, ages)
 # print(list(zipped)) # Prints [('Alice', 25), ('Bob', 30), ('Charlie', 35)]
 
-#!/bin/python3
+# !/bin/python3
 
-import math
-import os
-import random
-import re
-import sys
-import ast
+# import math
+# import os
+# import random
+# import re
+# import sys
+# import ast
 
 
 
 # Enter your code here. Read input from STDIN. Print output to STDOUT
-#
+
 # Complete the 'roman_to_int' function below.
-#
+
 # The function is expected to return an INTEGER.
 # The function accepts STRING s as parameter.
-#
+
 
 # def roman_to_int(s):
 #     if not s:
@@ -361,19 +361,19 @@ import ast
 # s = "2[abc]3[cd]ef"
 # #Output: "abcabccdcdcdef"
 
-class Villager:
-    def __init__(self, name, species, personality, catchphrase):
-        self.name = name
-        self.species = species
-        self.personality = personality
-        self.catchphrase = catchphrase
-        self.furniture = []
-    def add_item(self, item_name):
-        valid = ["acoustic guitar", "ironwood kitchenette", "rattan armchair", "kotatsu", "cacao tree"]
-        if item_name in valid:
-            self.furniture.append(item_name)
-def of_personality_type(townies, personality_type):
-    return [villager.name for villager in townies if villager.personality == personality_type]
+# class Villager:
+#     def __init__(self, name, species, personality, catchphrase):
+#         self.name = name
+#         self.species = species
+#         self.personality = personality
+#         self.catchphrase = catchphrase
+#         self.furniture = []
+#     def add_item(self, item_name):
+#         valid = ["acoustic guitar", "ironwood kitchenette", "rattan armchair", "kotatsu", "cacao tree"]
+#         if item_name in valid:
+#             self.furniture.append(item_name)
+# def of_personality_type(townies, personality_type):
+#     return [villager.name for villager in townies if villager.personality == personality_type]
 
 # isabelle = Villager("Isabelle", "Dog", "Normal", "what's up?")
 # bob = Villager("Bob", "Cat", "Lazy", "pthhhpth")
@@ -450,23 +450,23 @@ def of_personality_type(townies, personality_type):
 # print_linked_list(catch_fish(fish_list))
 # print(catch_fish(empty_list))
 
-class ListNode(object):
-    def __init__(self, val =0, next=None):
-        self.val = val
-        self.next = next
-class Solution(object):
-    def reverseList(self, head):
-        self.head = head
+# class ListNode(object):
+#     def __init__(self, val =0, next=None):
+#         self.val = val
+#         self.next = next
+# class Solution(object):
+#     def reverseList(self, head):
+#         self.head = head
         
-        curr = self.head
-        prev = None
-        while curr:
-            temp_node = curr.next
-            curr.next = prev
-            prev = curr
-            curr = temp_node
-        self.head = prev
-        return self.head
+#         curr = self.head
+#         prev = None
+#         while curr:
+#             temp_node = curr.next
+#             curr.next = prev
+#             prev = curr
+#             curr = temp_node
+#         self.head = prev
+#         return self.head
 # # Helper function to print the list
 # def print_list(head):
 #     curr = head
@@ -556,34 +556,183 @@ class Solution(object):
 #     #return the list
 
 
+# class Node:
+#     def __init__(self, value, next=None):
+#         self.value = value
+#         self.next = next
+
+# def has_cycle(head):
+#     #if empty list
+#     if head is None:
+#         return False
+#     if head.next is None:
+#         return False
+
+#     #initiate fast and slow pointers
+#     fast = head
+#     slow = head.next
+
+#     #iterate through linked list with fast and slow
+#     while fast:
+#         #if fast and slow are equal, return true
+#         if fast == slow:
+#             return True
+#         else:
+#             fast = fast.next.next
+#             slow = slow.next
+#      #if you reach the end, return false
+#     return False
+
+# peach = Node("Peach", Node("Luigi", Node("Mario", Node("Toad"))))
+
+# print(has_cycle(peach))
+
+
+# class Player:
+#     def __init__(self, character, kart):
+#         self.character = character
+#         self.kart = kart
+#         self.items = []
+
+# class Node:
+#     def __init__(self, value, next=None):
+#         self.value = value
+#         self.next = next
+
+# # For testing
+# def print_linked_list(head):
+#     current = head
+#     while current:
+#         print(current.value, end=" -> " if current.next else "\n")
+#         current = current.next
+
+# def arr_to_ll(arr):
+#     #check if there is an array, if not return None
+#     if arr is None:
+#         return None
+#     head = None
+#     curr = None
+#     prev = None
+
+#     #iterate through array by index
+#     for i in range(len(arr)):
+    
+#     #if first index, create head node
+#         if i == 0:
+#             head = Node(arr[i].character)
+#             prev = head
+#         else:
+#             #otherwise, create node
+#             curr = Node(arr[i].character)
+            
+#             #link previous to curr
+#             prev.next = curr
+#             #set curr to prev
+#             prev = curr
+
+
+#     return head
+   
+
+# mario = Player("Mario", "Mushmellow")
+# luigi = Player("Luigi", "Standard LG")
+# peach = Player("Peach", "Bumble V")
+
+# print_linked_list(arr_to_ll([mario, luigi, peach]))
+# print_linked_list(arr_to_ll([peach]))
+
+# class Node:
+#     def __init__(self, value=None, next=None):
+#         self.value = value
+#         self.next = next
+
+# # For testing
+# def print_linked_list(head):
+#     current = head
+#     while current:
+#         print(current.value, end=" -> " if current.next else "\n")
+#         current = current.next
+
+# # Function with a bug!
+# def remove_by_value(head, val):
+#     if not head:
+#         return None
+#     if head.value == val:
+#         return head.next  
+
+#     current = head
+#     while current.next:
+#         if current.next.value == val:
+#             current = current.next.next  
+#             return head  
+#         current = current.next
+
+#     return head
+
+# head = Node("Daisy", Node("Mario", Node("Waluigi", Node("Baby Peach"))))
+
+# print_linked_list(remove_by_value(head, "Waluigi"))
+
+# def count_layers(sandwich):
+#     # if no list, return 0
+#     if sandwich is None:
+#         return 0
+#     #if we have a list of length 1, return 1
+#     if len(sandwich) == 1:
+#         return 1
+#     #we have a list greater than length 1, so we return the value plus the recursive value
+#     return 1 + count_layers(sandwich[1])
+
+
+# sandwich1 = ["bread", ["lettuce", ["tomato", ["bread"]]]]
+
+# sandwich2 = ["bread", ["cheese", ["ham", ["mustard", ["bread"]]]]]
+
+# print(count_layers(sandwich1))
+# print(count_layers(sandwich2))
+
+# def reverse_orders(orders):
+#     # if the string is empty, return empty string
+#     if orders is None:
+#         return ""
+
+#     order = orders.split()
+
+#     # print(order)
+
+#     if len(order) == 1:
+#         return order[-1]
+
+#     neworders = " ".join(order[0:-1])
+#     # print(neworders)
+#     return order[-1] + " " + reverse_orders(neworders)
+
+    
+
+# print(reverse_orders("Bagel Sandwich Coffee"))
+
+# def can_split_coffee(coffee, n):
+#     if len(coffee) == 1:
+#         if coffee[0] % n == 0:
+#             return True
+#         return False
+#     else:
+#         return can_split_coffee(coffee[1:], n)
+
+# print(can_split_coffee([4, 4, 8], 2))
+# print(can_split_coffee([5, 10, 15], 4))
+
 class Node:
     def __init__(self, value, next=None):
         self.value = value
         self.next = next
 
-def has_cycle(head):
-    #if empty list
-    if head is None:
-        return False
-    if head.next is None:
-        return False
+# For testing
+def print_linked_list(head):
+    current = head
+    while current:
+        print(current.value, end=" -> " if current.next else "\n")
+        current = current.next
 
-    #initiate fast and slow pointers
-    fast = head
-    slow = head.next
-
-    #iterate through linked list with fast and slow
-    while fast:
-        #if fast and slow are equal, return true
-        if fast == slow:
-            return True
-        else:
-            fast = fast.next.next
-            slow = slow.next
-     #if you reach the end, return false
-    return False
-
-peach = Node("Peach", Node("Luigi", Node("Mario", Node("Toad"))))
-
-print(has_cycle(peach))
-
+def merge_orders(sandwich_a, sandwich_b)
+    pass
