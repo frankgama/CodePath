@@ -722,17 +722,50 @@
 # print(can_split_coffee([4, 4, 8], 2))
 # print(can_split_coffee([5, 10, 15], 4))
 
-class Node:
-    def __init__(self, value, next=None):
-        self.value = value
-        self.next = next
+# class Node:
+#     def __init__(self, value, next=None):
+#         self.value = value
+#         self.next = next
 
-# For testing
-def print_linked_list(head):
-    current = head
-    while current:
-        print(current.value, end=" -> " if current.next else "\n")
-        current = current.next
+# # For testing
+# def print_linked_list(head):
+#     current = head
+#     while current:
+#         print(current.value, end=" -> " if current.next else "\n")
+#         current = current.next
 
-def merge_orders(sandwich_a, sandwich_b)
-    pass
+# def merge_orders(sandwich_a, sandwich_b)
+#     pass
+
+#### Hackerank####
+
+def reverse_between(head, left, right):
+    #check there is a valid head
+    if head is None:
+        return
+    #create temp head
+    curr = head
+    prev = None
+    #iterate through the list until you find the left node
+    while curr:
+        #make this the new head
+        if curr.val == left:
+            head = curr
+            #if there is a next node, update curr
+            if curr.next:
+                prev = curr
+                curr = curr.next
+            else:
+                #otherwise we reached the end of the list, return head   
+                return head
+        #if curr node is less than or equal to right as is the next one, keep updating
+        elif curr.val <= right:
+            if curr.next:
+                prev = curr
+                curr = curr.next
+        #if curr node is less than or equal to right, but next is greater
+        elif curr.val > right:
+            prev.next = None
+            return head
+            #set curr.next to none, finishing the list
+        
