@@ -739,33 +739,79 @@
 
 #### Hackerank####
 
-def reverse_between(head, left, right):
-    #check there is a valid head
-    if head is None:
-        return
-    #create temp head
-    curr = head
-    prev = None
-    #iterate through the list until you find the left node
-    while curr:
-        #make this the new head
-        if curr.val == left:
-            head = curr
-            #if there is a next node, update curr
-            if curr.next:
-                prev = curr
-                curr = curr.next
-            else:
-                #otherwise we reached the end of the list, return head   
-                return head
-        #if curr node is less than or equal to right as is the next one, keep updating
-        elif curr.val <= right:
-            if curr.next:
-                prev = curr
-                curr = curr.next
-        #if curr node is less than or equal to right, but next is greater
-        elif curr.val > right:
-            prev.next = None
-            return head
-            #set curr.next to none, finishing the list
+# def reverse_between(head, left, right):
+#     #check there is a valid head
+#     if head is None:
+#         return
+#     #create temp head
+#     curr = head
+#     prev = None
+#     #iterate through the list until you find the left node
+#     while curr:
+#         #make this the new head
+#         if curr.val == left:
+#             head = curr
+#             #if there is a next node, update curr
+#             if curr.next:
+#                 prev = curr
+#                 curr = curr.next
+#             else:
+#                 #otherwise we reached the end of the list, return head   
+#                 return head
+#         #if curr node is less than or equal to right as is the next one, keep updating
+#         elif curr.val <= right:
+#             if curr.next:
+#                 prev = curr
+#                 curr = curr.next
+#         #if curr node is less than or equal to right, but next is greater
+#         elif curr.val > right:
+#             prev.next = None
+#             return head
+#             #set curr.next to none, finishing the list
         
+# def find_affordable_ticket(prices, budget):
+#     if prices is None:
+#         return -1   
+#     left = 0
+#     right = len(prices) - 1
+#     midpoint = len(prices)//2
+    
+
+#     while left < right:
+#         # print(left)
+#         # print(right)
+#         # print(midpoint)
+#         if prices[midpoint] < budget:
+            
+#             left = midpoint + 1
+#             midpoint = (left + right)//2
+#             # print(prices[left])
+#         elif prices[midpoint] > budget:
+            
+#             right = midpoint - 1
+#             midpoint = left + right // 2
+#             # print(prices[right])
+    
+#     return left
+        
+# print(find_affordable_ticket([50, 75, 100, 150], 90))
+
+def find_affordable_ticket(prices, budget):
+    if prices is None:
+        return -1
+    left = 0
+    right = len(prices) - 1
+    #base case, left > right, return
+    if left > right:
+        return right
+
+    #compute midpoint
+    midpoint = left + right // 2
+
+    #compare midpoint price with budet
+    if prices[midpoint] > budget:
+        find_affordable_ticket(prices[:midpoint], budget)
+    
+    find_affordable_ticket(prices[midpoint:], budget)
+        
+print(find_affordable_ticket([50, 75, 100, 150], 90))
