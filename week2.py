@@ -796,22 +796,175 @@
         
 # print(find_affordable_ticket([50, 75, 100, 150], 90))
 
-def find_affordable_ticket(prices, budget):
-    if prices is None:
-        return -1
-    left = 0
-    right = len(prices) - 1
-    #base case, left > right, return
-    if left > right:
-        return right
+# def find_affordable_ticket(prices, budget):
+#     if prices is None:
+#         return -1
+#     left = 0
+#     right = len(prices) - 1
+#     #base case, left > right, return
+#     if left > right:
+#         return right
 
-    #compute midpoint
-    midpoint = left + right // 2
+#     #compute midpoint
+#     midpoint = left + right // 2
 
-    #compare midpoint price with budet
-    if prices[midpoint] > budget:
-        find_affordable_ticket(prices[:midpoint], budget)
+#     #compare midpoint price with budet
+#     if prices[midpoint] > budget:
+#         find_affordable_ticket(prices[:midpoint], budget)
     
-    find_affordable_ticket(prices[midpoint:], budget)
+#     find_affordable_ticket(prices[midpoint:], budget)
         
-print(find_affordable_ticket([50, 75, 100, 150], 90))
+# print(find_affordable_ticket([50, 75, 100, 150], 90))
+
+
+# def check_stock(inventory, part_id):
+#     #if no inventory list or no part id, return false
+#     if inventory is None or part_id is None:
+#         return False
+
+#     #if last element less than part id, return false
+#     if inventory[-1] < part_id:
+#         return False
+#     #initialize two pointers, left and right
+#     left = 0
+#     right = len(inventory) - 1
+    
+    
+#     #compare the mid to part id
+#     while left <= right:
+#         midpoint = (left + right)//2
+#         #if less than part id
+#         if inventory[midpoint] < part_id:
+#             #update left to midpoint + 1 
+#             left = midpoint + 1
+#         #if more than part id
+#         if inventory[midpoint] > part_id:
+#             #update right to midpoint - 1
+#             right = midpoint - 1
+#         #if equal
+#         if inventory[midpoint] == part_id:
+#             return True
+#     #return false if part id not found
+#     return False
+
+# print(check_stock([1, 2, 5, 12, 20], 20))
+# print(check_stock([1, 2, 5, 12, 20], 100))
+# def find_frequency_positions(transmissions, target_code):
+#     if transmissions is None or target_code is None:
+#         return (-1,-1)
+#     left = 0
+#     right = len(transmissions) - 1
+  
+
+#     while left < right:
+#         midpoint = (left + right)//2
+#         if transmissions[midpoint] <= target_code:
+#             right = midpoint
+#         if transmissions[midpoint] >= left:
+#             left ==
+
+# class TreeNode:
+#     def __init__(self, value, left=None, right=None):
+#         self.val = value
+#         self.left = left
+#         self.right = right
+
+# def right_vine(root):
+#     #edge case
+#     #if no root, return empty list
+#     if root is None:
+#         return []
+
+#     #otherwise find the right most node
+#     #make a helper function that takes a root and list as arguments
+#     def find_right(root, alist):
+
+#         #add the value of the root to the list
+#         alist.append(root.val)
+#         #print(alist)
+        
+#         #base case
+#         #check if the root has a right child
+#         if root.right is None:
+#             #if not, return the list
+#             return alist
+
+#         #otherwise return a recursive call of the function
+#         #update the root to be the right child, and pass the appended list 
+#         #print(alist)
+#         return find_right(root.right, alist)
+
+#     rightlist = []
+#     return find_right(root, rightlist)
+
+# class TreeNode:
+#     def __init__(self, value, left=None, right=None):
+#         self.val = value
+#         self.left = left
+#         self.right = right
+
+# # def right_vine(root):
+# #     if root is None:    
+# #         return rightlist
+
+# #     rightlist = []
+# #     if root.right is None:
+# #     rightlist.append(root.val)
+# #     right_vine(root.right)
+
+
+# ivy1 = TreeNode("Root", 
+#                 TreeNode("Node1", TreeNode("Leaf1")),
+#                 TreeNode("Node2", TreeNode("Leaf2"), TreeNode("Leaf3")))
+
+# ivy2 = TreeNode("Root", TreeNode("Node1", TreeNode("Leaf1")))
+
+# print(right_vine(ivy1))
+#print(right_vine(ivy2))
+import math
+import os
+import random
+import re
+import sys
+import ast
+
+from typing import Optional, List
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+def kth_smallest(root, k):
+    #edge case, return -1
+    if root is None or k is None:
+        return -1
+    def helper_function(root, alist):
+        #base case, if root is None, return list
+        if root is None:
+            return alist
+        #otherwise check the left and right children
+        #add current value to list
+
+        if root.left is None and root.right is None:
+            alist.append(root.val)
+            return alist
+        alist.append(root.val)
+        #call the function down the left
+        helper_function(root.left, alist)
+        #call the function down the right
+        helper_function(root.right, alist)
+    result = []
+    helper_function(root, result)
+    position = (len(result) - 1) - k
+    print(len(result))
+    result.sort()
+
+    return position
+ivy1 = TreeNode("Root", 
+                TreeNode("Node1", TreeNode("Leaf1")),
+                TreeNode("Node2", TreeNode("Leaf2"), TreeNode("Leaf3")))
+
+ivy2 = TreeNode("Root", TreeNode("Node1", TreeNode("Leaf1")))
+
+print(kth_smallest(ivy1, 1))
